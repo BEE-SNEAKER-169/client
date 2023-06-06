@@ -1,0 +1,15 @@
+.ant-layout-sider-children > div {
+    width: 275px;
+    overflow-x: auto !important;
+
+}
+.ant-layout-sider {
+    flex: 0 0 250px !important;
+    max-width: initial !important;
+    min-width: inherit !important;
+    width: initial !important;
+}
+nav
+{
+    font-size: 12px;
+}
