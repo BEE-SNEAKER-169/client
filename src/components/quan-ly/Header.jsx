@@ -248,7 +248,7 @@ export default function ComplexNavbar() {
 
  
   return (
-    <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6">
+    <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6 shadow-md shadow-indigo-500/40 hover:shadow-indigo-500/50 ease-in-out">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
         <Typography
           as="a"
@@ -271,7 +271,7 @@ export default function ComplexNavbar() {
         </IconButton>
         <ProfileMenu />
       </div>
-      <MobileNav open={isNavOpen} className="overflow-scroll">
+      <MobileNav  open={isNavOpen} className="overflow-scroll">
         <NavList />
       </MobileNav>
     </Navbar>

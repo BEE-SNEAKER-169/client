@@ -7,10 +7,12 @@ import NotFound from './pages/404';
 import NotAuthorized from './pages/401';
 import AuthGuard from './guard/AuthGuard';
 import DashBoardLayoutQuanLy from './layout/quan-ly/DashboardQuanLy';
+import Contact from './pages/quan-ly/man-1/chuc-nang-1';
 
 function App() {
+
   return (
-    <div className="App scroll-smooth md:scroll-auto">
+    <div className="App scroll-smooth md:scroll-auto font-sans">
       <BrowserRouter basename={AppConfig.routerBase}>
         <Suspense >
           <Routes>
@@ -24,7 +26,7 @@ function App() {
               element={
                 <AuthGuard>
                   <DashBoardLayoutQuanLy>
-                    <h1>Ok men</h1>
+                    <Contact/>
                   </DashBoardLayoutQuanLy>
                 </AuthGuard>
               }

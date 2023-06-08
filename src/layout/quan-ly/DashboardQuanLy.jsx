@@ -22,7 +22,8 @@ const DashBoardLayoutQuanLy = ({children}) => {
         lineHeight: '120px',
         color: '#000',
         paddingTop: 100,
-        background: "#f8f9fa"
+        background: "#f8f9fa",
+        minHeight: 650
       };
       const siderStyle = {
         textAlign: 'center',
@@ -47,14 +48,14 @@ const DashBoardLayoutQuanLy = ({children}) => {
       <Sider style={siderStyle}>
         <Sidebar style={siderStyle}></Sidebar>
       </Sider>
-      <Layout style={{    marginLeft: "50px"}}>
+      <Layout style={{    marginLeft: "60px", marginRight: "20px"}}>
         <Header style={headerStyle} className='pt-3 sticky top-0 z-50 opacity-100 backdrop-blur-0 backdrop-filter-none' >
-          <ComplexNavbar/>
+          <ComplexNavbar  />
         </Header>
         <Content style={contentStyle}>
           {children}
         </Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        {/* <Footer style={footerStyle}>Footer</Footer> */}
       </Layout>
     </Layout>
   </Space>
