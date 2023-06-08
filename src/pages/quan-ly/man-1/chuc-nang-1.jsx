@@ -23,7 +23,7 @@ export default function Contact() {
           title: 'Mã',
           dataIndex: 'ma',
           key: 'ma',
-          render: (text) => <a>{text}</a>,
+          render: (text) => <span>{text}</span>,
         },
         {
           title: 'Tên',

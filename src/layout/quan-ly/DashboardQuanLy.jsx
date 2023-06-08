@@ -32,11 +32,7 @@ const DashBoardLayoutQuanLy = ({children}) => {
         backgroundColor: '#3ba0e9',
         background: "#f8f9fa"
       };
-      const footerStyle = {
-        textAlign: 'center',
-        color: '#fff',
-        backgroundColor: '#7dbcea',
-      };
+
     return <Space
     direction="vertical"
     style={{
