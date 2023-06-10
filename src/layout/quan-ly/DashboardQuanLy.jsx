@@ -5,7 +5,7 @@ import { Layout, Space } from 'antd';
 import Sidebar from '../../components/quan-ly/Slidebar';
 import ComplexNavbar from '../../components/quan-ly/Header';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 
 const DashBoardLayoutQuanLy = ({children}) => {
     const headerStyle = {

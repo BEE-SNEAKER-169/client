@@ -7,7 +7,7 @@ import NotFound from './pages/404';
 import NotAuthorized from './pages/401';
 import AuthGuard from './guard/AuthGuard';
 import DashBoardLayoutQuanLy from './layout/quan-ly/DashboardQuanLy';
-import Contact from './pages/quan-ly/man-1/chuc-nang-1';
+import QuanLyCategory from './pages/quan-ly/category/chuc-nang-1';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
               element={
                 <AuthGuard>
                   <DashBoardLayoutQuanLy>
-                    <Contact/>
+                    <QuanLyCategory/>
                   </DashBoardLayoutQuanLy>
                 </AuthGuard>
               }

@@ -138,7 +138,6 @@ function NavListMenu() {
   };
  
   const renderItems = navListMenuItems.map(({ title, description }) => (
-    <a href="#" key={title}>
       <MenuItem>
         <Typography variant="h6" color="blue-gray" className="mb-1">
           {title}
@@ -147,7 +146,6 @@ function NavListMenu() {
           {description}
         </Typography>
       </MenuItem>
-    </a>
   ));
  
   return (
