@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { Button, Pagination, Space, Table, Tooltip } from "antd";
+import { Button, Col, Input, Pagination, Row, Space, Table, Tooltip } from "antd";
 import {
     PlusOutlined,
     SearchOutlined,
@@ -23,7 +23,6 @@ export default function QuanLyCategory () {
 
   useEffect(() => {
     CategoryAPI.fetchAll().then((response) => {
-      console.log(response.data.data);
       dispatch(SetCategory(response.data.data.data))
       setTotal(response.data.data.totalPages)
     });
@@ -31,14 +30,15 @@ export default function QuanLyCategory () {
 
   useEffect(() => {
     fetchData(); 
-  }, [current], [search]); 
+  }, [current]); 
   
   const fetchData = () => { 
     CategoryAPI.fetchAll({
-      name: search,
+      search: search,
       page: current - 1
     }).then((response) => {
       dispatch(SetCategory(response.data.data.data))
+      setTotal(response.data.data.totalPages)
     });
   }
 
@@ -62,20 +62,20 @@ export default function QuanLyCategory () {
           key: 'name',
         },
         {
-          title: 'Action',
+          title: () => <div>Action</div>,
           key: 'action',
           render: (_, record) => (
-            <Space size="middle">
+              <Space size="small">
                 <Tooltip title="Update demo">
-                    <Button type="primary" onClick={() => {
-                                    setDetailCategory(record)
-                                    setShowModal(true);
-                                  } } className="bg-green-400 text-white hover:bg-green-300" ><EditOutlined /></Button>
-                </Tooltip>
-                <DeleteConfirm id = {record.id}></DeleteConfirm>
-                <Tooltip title="Detail demo">
-                    <Button type="primary" className="bg-green-400 text-white hover:bg-green-300" ><FormOutlined /></Button>
-                </Tooltip>
+                      <Button type="primary" onClick={() => {
+                                      setDetailCategory(record)
+                                      setShowModal(true);
+                                    } } className="bg-green-400 text-white hover:bg-green-300" ><EditOutlined /></Button>
+                  </Tooltip>
+                  <DeleteConfirm id = {record.id}></DeleteConfirm>
+                  <Tooltip title="Detail demo">
+                      <Button type="primary" className="bg-green-400 text-white hover:bg-green-300" ><FormOutlined /></Button>
+                  </Tooltip>
             </Space>
           ),
         },
@@ -87,7 +87,7 @@ export default function QuanLyCategory () {
           <ModalThem modalOpen={showModal} setModalOpen={setShowModal} category={detailCategory} SetCategory = {setDetailCategory} />
         )}
         <div className="p-10 bg-white rounded-xl mt-5 shadow-md shadow-indigo-500/40 hover:shadow-indigo-500/50 ease-in-out" >
-            <div className="flex justify-between h-20">
+          <div className="flex justify-between h-20">
                 <div className="leading-10">
                     <h1 className="text-2xl font-black">Table Demo</h1>
                 </div>
@@ -103,14 +103,26 @@ export default function QuanLyCategory () {
                                 ><PlusOutlined /></Button>
                             </Tooltip>
                         </span>
-                        <span>
-                            <Tooltip title="Search demo">
-                                <Button type="primary" className="bg-orange-500 text-white hover:bg-orange-300" ><SearchOutlined /></Button>
-                            </Tooltip>
-                        </span>
                     </div>
                 </div>
-            </div>
+          </div>
+          <Row>
+            <Col flex={1}>Search</Col>
+            <Col flex={4}><Input value={search} onChange={(e) => {
+              setSearch(e.target.value)
+            }} placeholder="Search by name or code" /></Col>
+            <Col flex={1}>
+                        <span>
+                            <Tooltip title="Search demo">
+                  <Button type="primary" onClick={() => {
+                    setCurrent(1)
+                    fetchData()
+                                }} className="bg-orange-500 text-white hover:bg-orange-300" >Search</Button>
+                            </Tooltip>
+                        </span></Col>
+          </Row>
+        </div>
+        <div className="p-10 bg-white rounded-xl mt-5 shadow-md shadow-indigo-500/40 hover:shadow-indigo-500/50 ease-in-out" >
           <Table columns={columns} dataSource={data} rowKey="id" pagination={false} />
           <div className="mt-10">
             <Pagination
