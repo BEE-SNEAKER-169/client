@@ -34,7 +34,7 @@ const ModalThem = (props) => {
     } else {
       CategoryAPI.update(formValues, category.id)
         .then((response) => { 
-          dispatch(UpdateCategory(response.data.data));
+          // dispatch(UpdateCategory(response.data.data));
           message.success("Success!");
           setModalOpen(false)
           form.setFieldValue(null)

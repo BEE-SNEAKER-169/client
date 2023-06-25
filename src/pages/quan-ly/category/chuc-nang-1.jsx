@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Button, Col, Input, Pagination, Row, Space, Table, Tooltip } from "antd";
 import {
     PlusOutlined,
-    SearchOutlined,
     EditOutlined,
     FormOutlined
   } from '@ant-design/icons';
@@ -22,26 +21,19 @@ export default function QuanLyCategory () {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    CategoryAPI.fetchAll().then((response) => {
-      dispatch(SetCategory(response.data.data.data))
-      setTotal(response.data.data.totalPages)
-    });
-  }, [dispatch])
-
-  useEffect(() => {
     fetchData(); 
-  }, [current]); 
-  
+  }, [current], [dispatch]); 
+
   const fetchData = () => { 
     CategoryAPI.fetchAll({
       search: search,
-      page: current - 1
+      page: current - 1,
     }).then((response) => {
       dispatch(SetCategory(response.data.data.data))
+      console.log(response.data.data.data);
       setTotal(response.data.data.totalPages)
     });
   }
-
     const data = useAppSelector(GetCategory);
 
     const columns = [
